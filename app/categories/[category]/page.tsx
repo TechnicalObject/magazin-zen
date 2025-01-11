@@ -1,9 +1,9 @@
 import { slug } from 'github-slugger'
 import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer'
 import siteMetadata from '@/data/siteMetadata'
-import ListLayout from '@/layouts/ListLayoutWithTags'
+import ListLayout from '@/layouts/ListLayoutWithCategories'
 import { allBlogs } from 'contentlayer/generated'
-import tagData from 'app/tag-data.json'
+import categoryData from 'app/category-data.json'
 import { genPageMetadata } from 'app/seo'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
@@ -11,43 +11,43 @@ import { notFound } from 'next/navigation'
 const POSTS_PER_PAGE = 5
 
 export async function generateMetadata(props: {
-  params: Promise<{ tag: string }>
+  params: Promise<{ category: string }>
 }): Promise<Metadata> {
   const params = await props.params
-  const tag = decodeURI(params.tag)
+  const category = decodeURI(params.category)
   return genPageMetadata({
-    title: tag,
-    description: `${siteMetadata.title} ${tag} tagged content`,
+    title: category,
+    description: `${siteMetadata.title} ${category} categorized content`,
     alternates: {
       canonical: './',
       types: {
-        'application/rss+xml': `${siteMetadata.siteUrl}/tags/${tag}/feed.xml`,
+        'application/rss+xml': `${siteMetadata.siteUrl}/categories/${category}/feed.xml`,
       },
     },
   })
 }
 
 export const generateStaticParams = async () => {
-  const tagCounts = tagData as Record<string, number>
-  const tagKeys = Object.keys(tagCounts)
-  const paths = tagKeys.map((tag) => ({
-    tag: encodeURI(tag),
+  const categoryCounts = categoryData as Record<string, number>
+  const categoryKeys = Object.keys(categoryCounts)
+  const paths = categoryKeys.map((category) => ({
+    category: encodeURI(category),
   }))
   return paths
 }
 
-export default async function TagPage(props: {
-  params: Promise<{ tag: string }>
+export default async function CategoryPage(props: {
+  params: Promise<{ category: string }>
   searchParams: Promise<{ page: string }>
 }) {
   const params = await props.params
-  const tag = decodeURI(params.tag)
+  const category = decodeURI(params.category)
   const searchParams = await props.searchParams
   const pageNumber = parseInt(searchParams.page || '1')
   // Capitalize first letter and convert space to dash
-  const title = tag[0].toUpperCase() + tag.split(' ').join('-').slice(1)
+  const title = category[0].toUpperCase() + category.split(' ').join('-').slice(1)
   const filteredPosts = allCoreContent(
-    sortPosts(allBlogs.filter((post) => post.tags && post.tags.map((t) => slug(t)).includes(tag)))
+    sortPosts(allBlogs.filter((post) => post.categories && post.categories.map((t) => slug(t)).includes(category)))
   )
   const initialDisplayPosts = filteredPosts.slice(
     POSTS_PER_PAGE * (pageNumber - 1),
