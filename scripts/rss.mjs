@@ -3,7 +3,11 @@ import path from 'path'
 import { slug } from 'github-slugger'
 import { escape } from 'pliny/utils/htmlEscaper.js'
 import siteMetadata from '../data/siteMetadata.js'
-import tagData from '../app/tag-data.json' assert { type: 'json' }
+// following commented line gives an error (probably because it requires Node.js 16 and higher)
+// import tagData from '../app/tag-data.json' assert { type: 'json' }
+import { createRequire } from 'module'
+const require = createRequire(import.meta.url)
+const tagData = require('../app/tag-data.json')
 import { allBlogs } from '../.contentlayer/generated/index.mjs'
 import { sortPosts } from 'pliny/utils/contentlayer.js'
 
