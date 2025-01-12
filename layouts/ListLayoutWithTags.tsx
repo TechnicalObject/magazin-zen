@@ -85,7 +85,7 @@ export default function ListLayoutWithTags({
           <div className="hidden h-full max-h-screen min-w-[280px] max-w-[280px] flex-wrap overflow-auto rounded bg-gray-50 pt-5 shadow-md dark:bg-gray-900/70 dark:shadow-gray-800/40 sm:flex">
             <div className="px-6 py-4">
               {pathname.startsWith('/blog') ? (
-                <h3 className="font-bold uppercase text-primary-500">All Posts</h3>
+                <h3 className="font-bold uppercase text-primary-500">Všechny články</h3>
               ) : (
                 <Link
                   href={`/blog`}
@@ -123,29 +123,42 @@ export default function ListLayoutWithTags({
                 const { path, date, title, summary, tags } = post
                 return (
                   <li key={path} className="py-5">
-                    <article className="flex flex-col space-y-2 xl:space-y-0">
-                      <dl>
+                    <article className="flex flex-col gap-6">
+                      <div className="flex flex-row gap-6">
+                      <div className="hidden w-1/6 min-w-[150px] sm:block">
+                        <Link href={`/${path}`}>
+                        <div className="relative h-24">
+                          <img
+                          src={post.images?.[0] ?? '/static/images/canada/lake.jpg'}
+                          alt={title}
+                          className="h-full w-full rounded-md object-cover"
+                          />
+                        </div>
+                        </Link>
+                      </div>
+                      <div className="flex w-5/6 flex-col space-y-2 xl:space-y-0">
+                        <dl>
                         <dt className="sr-only">Published on</dt>
                         <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
                           <time dateTime={date} suppressHydrationWarning>
-                            {formatDate(date, siteMetadata.locale)}
+                          {formatDate(date, siteMetadata.locale)}
                           </time>
                         </dd>
-                      </dl>
-                      <div className="space-y-3">
+                        </dl>
                         <div>
-                          <h2 className="text-2xl font-bold leading-8 tracking-tight">
-                            <Link href={`/${path}`} className="text-gray-900 dark:text-gray-100">
-                              {title}
-                            </Link>
-                          </h2>
-                          <div className="flex flex-wrap">
-                            {tags?.map((tag) => <Tag key={tag} text={tag} />)}
-                          </div>
+                        <h2 className="text-2xl font-bold leading-8 tracking-tight">
+                          <Link href={`/${path}`} className="text-gray-900 dark:text-gray-100">
+                          {title}
+                          </Link>
+                        </h2>
+                        <div className="flex flex-wrap">
+                          {tags?.map((tag) => <Tag key={tag} text={tag} />)}
                         </div>
-                        <div className="prose max-w-none text-gray-500 dark:text-gray-400">
-                          {summary}
                         </div>
+                      </div>
+                      </div>
+                      <div className="prose max-w-none text-gray-500 dark:text-gray-400">
+                      {summary}
                       </div>
                     </article>
                   </li>
