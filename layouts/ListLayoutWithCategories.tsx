@@ -140,7 +140,9 @@ export default function ListLayoutWithCategories({
                             </Link>
                           </h2>
                           <div className="flex flex-wrap">
-                            {categories?.map((category) => <Category key={category} text={category} />)}
+                            {categories?.map((category) => (
+                              <Category key={category} text={category} />
+                            ))}
                           </div>
                         </div>
                         <div className="prose max-w-none text-gray-500 dark:text-gray-400">

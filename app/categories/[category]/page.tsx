@@ -47,7 +47,11 @@ export default async function CategoryPage(props: {
   // Capitalize first letter and convert space to dash
   const title = category[0].toUpperCase() + category.split(' ').join('-').slice(1)
   const filteredPosts = allCoreContent(
-    sortPosts(allBlogs.filter((post) => post.categories && post.categories.map((t) => slug(t)).includes(category)))
+    sortPosts(
+      allBlogs.filter(
+        (post) => post.categories && post.categories.map((t) => slug(t)).includes(category)
+      )
+    )
   )
   const initialDisplayPosts = filteredPosts.slice(
     POSTS_PER_PAGE * (pageNumber - 1),

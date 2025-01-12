@@ -125,40 +125,40 @@ export default function ListLayoutWithTags({
                   <li key={path} className="py-5">
                     <article className="flex flex-col gap-6">
                       <div className="flex flex-row gap-6">
-                      <div className="hidden w-1/6 min-w-[150px] sm:block">
-                        <Link href={`/${path}`}>
-                        <div className="relative h-24">
-                          <img
-                          src={post.images?.[0] ?? '/static/images/canada/lake.jpg'}
-                          alt={title}
-                          className="h-full w-full rounded-md object-cover"
-                          />
-                        </div>
-                        </Link>
-                      </div>
-                      <div className="flex w-5/6 flex-col space-y-2 xl:space-y-0">
-                        <dl>
-                        <dt className="sr-only">Published on</dt>
-                        <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                          <time dateTime={date} suppressHydrationWarning>
-                          {formatDate(date, siteMetadata.locale)}
-                          </time>
-                        </dd>
-                        </dl>
-                        <div>
-                        <h2 className="text-2xl font-bold leading-8 tracking-tight">
-                          <Link href={`/${path}`} className="text-gray-900 dark:text-gray-100">
-                          {title}
+                        <div className="hidden w-1/6 min-w-[150px] sm:block">
+                          <Link href={`/${path}`}>
+                            <div className="relative h-24">
+                              <img
+                                src={post.images?.[0] ?? '/static/images/canada/lake.jpg'}
+                                alt={title}
+                                className="h-full w-full rounded-md object-cover"
+                              />
+                            </div>
                           </Link>
-                        </h2>
-                        <div className="flex flex-wrap">
-                          {tags?.map((tag) => <Tag key={tag} text={tag} />)}
                         </div>
+                        <div className="flex w-5/6 flex-col space-y-2 xl:space-y-0">
+                          <dl>
+                            <dt className="sr-only">Published on</dt>
+                            <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
+                              <time dateTime={date} suppressHydrationWarning>
+                                {formatDate(date, siteMetadata.locale)}
+                              </time>
+                            </dd>
+                          </dl>
+                          <div>
+                            <h2 className="text-2xl font-bold leading-8 tracking-tight">
+                              <Link href={`/${path}`} className="text-gray-900 dark:text-gray-100">
+                                {title}
+                              </Link>
+                            </h2>
+                            <div className="flex flex-wrap">
+                              {tags?.map((tag) => <Tag key={tag} text={tag} />)}
+                            </div>
+                          </div>
                         </div>
-                      </div>
                       </div>
                       <div className="prose max-w-none text-gray-500 dark:text-gray-400">
-                      {summary}
+                        {summary}
                       </div>
                     </article>
                   </li>
