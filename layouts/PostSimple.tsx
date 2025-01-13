@@ -12,11 +12,11 @@ import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 interface LayoutProps {
   content: CoreContent<Blog>
   children: ReactNode
-  next?: { path: string; title: string }
-  prev?: { path: string; title: string }
+  next?: { slug: string; title: string }
+  prev?: { slug: string; title: string }
 }
 
-export default function PostLayout({ content, next, prev, children }: LayoutProps) {
+export default function PostSimple({ content, next, prev, children }: LayoutProps) {
   const { slug, date, title } = content
 
   return (
@@ -45,15 +45,15 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
             </div>
             {siteMetadata.comments && (
               <div className="pb-6 pt-6 text-center text-gray-700 dark:text-gray-300" id="comment">
-                <Comments slug={slug} />
+                <Comments postSlug={slug} />
               </div>
             )}
             <footer>
               <div className="flex flex-col text-sm font-medium sm:flex-row sm:justify-between sm:text-base">
-                {prev && prev.path && (
+                {prev && prev.slug && (
                   <div className="pt-4 xl:pt-8">
                     <Link
-                      href={`/${prev.path}`}
+                      href={`/blog/${prev.slug}`}
                       className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
                       aria-label={`Previous post: ${prev.title}`}
                     >
@@ -61,10 +61,10 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
                     </Link>
                   </div>
                 )}
-                {next && next.path && (
+                {next && next.slug && (
                   <div className="pt-4 xl:pt-8">
                     <Link
-                      href={`/${next.path}`}
+                      href={`/blog/${next.slug}`}
                       className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
                       aria-label={`Next post: ${next.title}`}
                     >
