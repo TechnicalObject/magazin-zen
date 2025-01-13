@@ -56,6 +56,23 @@ export default function Header() {
         <SearchButton />
         <ThemeSwitch />
         <MobileNav />
+        {session ? (
+          <>
+            <Link
+              href="/profile"
+              className="hidden font-medium text-gray-900 dark:text-gray-100 sm:block"
+            >
+              Profil
+            </Link>
+          </>
+        ) : (
+          <Link
+            href="/login"
+            className="hidden font-medium text-gray-900 dark:text-gray-100 sm:block"
+          >
+            Přihlásit
+          </Link>
+        )}
       </div>
     </header>
   )
