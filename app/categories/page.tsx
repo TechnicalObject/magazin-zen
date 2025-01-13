@@ -4,7 +4,10 @@ import { slug } from 'github-slugger'
 import categoryData from 'app/category-data.json'
 import { genPageMetadata } from 'app/seo'
 
-export const metadata = genPageMetadata({ title: 'Rubriky', description: 'Things I blog about' })
+export const metadata = genPageMetadata({
+  title: 'Rubriky',
+  description: 'Things I blog about',
+})
 
 export default async function Page() {
   const categoryCounts = categoryData as Record<string, number>

@@ -5,12 +5,12 @@ import 'remark-github-blockquote-alert/alert.css'
 import { Space_Grotesk } from 'next/font/google'
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
 import { SearchProvider, SearchConfig } from 'pliny/search'
-import Header from '@/components/Header'
 import SectionContainer from '@/components/SectionContainer'
 import Footer from '@/components/Footer'
 import siteMetadata from '@/data/siteMetadata'
 import { ThemeProviders } from './theme-providers'
 import { Metadata } from 'next'
+import ClientLayout from '@/components/ClientLayout'
 
 const space_grotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -99,8 +99,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
           <SectionContainer>
             <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
-              <Header />
-              <main className="mb-auto">{children}</main>
+              <ClientLayout>{children}</ClientLayout>
             </SearchProvider>
             <Footer />
           </SectionContainer>

@@ -14,7 +14,7 @@ export default async function BlogPage(props: { searchParams: Promise<{ page: st
   const pageNumber = parseInt(searchParams.page || '1')
   const initialDisplayPosts = posts.slice(
     POSTS_PER_PAGE * (pageNumber - 1),
-    POSTS_PER_PAGE * pageNumber
+    POSTS_PER_PAGE * pageNumber,
   )
   if (initialDisplayPosts.length === 0) {
     return notFound()
