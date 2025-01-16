@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { useSession } from 'next-auth/react'
 import Image from './Image'
 import { formatDate } from 'pliny/utils/formatDate'
+import siteMetadata from '@/data/siteMetadata'
 
 interface Comment {
   id: string
@@ -115,7 +116,7 @@ export default function Comments({ postSlug }: CommentsProps) {
               )}
               <span className="font-medium dark:text-gray-200">{comment.author.name}</span>
               <span className="text-gray-500 dark:text-gray-400 text-sm ml-2">
-                {formatDate(comment.createdAt)}
+                {formatDate(comment.createdAt, siteMetadata.locale)}
               </span>
             </div>
             <p className="text-gray-700 dark:text-gray-300">{comment.text}</p>
