@@ -6,9 +6,9 @@ const pool = new Pool({
   database: process.env.PGDATABASE,
   password: process.env.PGPASSWORD,
   ssl: {
-    rejectUnauthorized: false
+    rejectUnauthorized: false,
   },
-  max: 20
+  max: 20,
 })
 
 export default pool

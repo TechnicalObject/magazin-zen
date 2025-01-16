@@ -8,13 +8,13 @@ import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
 import SearchButton from './SearchButton'
 import { useSession, signOut } from 'next-auth/react'
-import { useState } from 'react';
+import { useState } from 'react'
 import { Profile } from '@/components/social-icons/icons'
 
 export default function Header() {
   const { data: session } = useSession()
-  const [isOpen, setIsOpen] = useState(false);
-  const closeMenu = () => setIsOpen(false);
+  const [isOpen, setIsOpen] = useState(false)
+  const closeMenu = () => setIsOpen(false)
 
   return (
     <header className="flex items-center justify-between py-10">
@@ -75,8 +75,8 @@ export default function Header() {
                 </Link>
                 <button
                   onClick={() => {
-                    closeMenu(); // Close menu before signing out
-                    signOut();
+                    closeMenu() // Close menu before signing out
+                    signOut()
                   }}
                   className="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
                 >

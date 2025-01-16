@@ -27,7 +27,7 @@ const components = {
   instagram: Instagram,
   medium: Medium,
   bluesky: Bluesky,
-  profile: Profile
+  profile: Profile,
 }
 
 type SocialIconProps = {
