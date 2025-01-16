@@ -37,7 +37,7 @@ export default function Home({ posts }) {
                   </div>
                   <div className="col-span-5 space-y-2">
                     <dl>
-                      <dt className="sr-only">Published on</dt>
+                      <dt className="sr-only">Zveřejněno</dt>
                       <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
                         <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
                       </dd>

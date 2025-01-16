@@ -1,7 +1,7 @@
 const headerNavLinks = [
   { href: '/', title: 'Domů' },
   { href: '/blog', title: 'Články' },
-  { href: '/tags', title: 'Tagy' },
+  { href: '/tags', title: 'Štítky' },
   { href: '/about', title: 'O nás' },
 ]
 
