@@ -54,7 +54,8 @@ const securityHeaders = [
   },
   {
     key: 'Content-Security-Policy',
-    value: "script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app analytics.umami.is https://vercel.live;",
+    value:
+      "script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app analytics.umami.is https://vercel.live;",
   },
 ]
 
