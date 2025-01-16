@@ -8,9 +8,13 @@ import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
 import SearchButton from './SearchButton'
 import { useSession, signOut } from 'next-auth/react'
+import { useState } from 'react';
+import { Profile } from '@/components/social-icons/icons'
 
 export default function Header() {
   const { data: session } = useSession()
+  const [isOpen, setIsOpen] = useState(false);
+  const closeMenu = () => setIsOpen(false);
 
   return (
     <header className="flex items-center justify-between py-10">
@@ -45,26 +49,42 @@ export default function Header() {
               {link.title}
             </Link>
           ))}
-        {session && (
-          <button
-            onClick={() => signOut()}
-            className="hidden font-medium text-gray-900 dark:text-gray-100 sm:block"
-          >
-            Logout
-          </button>
-        )}
         <SearchButton />
         <ThemeSwitch />
         <MobileNav />
         {session ? (
-          <>
-            <Link
-              href="/profile"
-              className="hidden font-medium text-gray-900 dark:text-gray-100 sm:block"
+          <div className="relative">
+            {/* Toggle Button */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="font-medium text-gray-900 dark:text-gray-100 sm:block"
             >
-              Profil
-            </Link>
-          </>
+              <Profile width={24} height={24} fill="currentColor" />
+              {/* {session.user?.name || 'Profile'} */}
+            </button>
+
+            {/* Dropdown Menu */}
+            {isOpen && (
+              <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg py-1 z-10">
+                <Link
+                  href="/profile"
+                  className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                  onClick={closeMenu}
+                >
+                  Profil
+                </Link>
+                <button
+                  onClick={() => {
+                    closeMenu(); // Close menu before signing out
+                    signOut();
+                  }}
+                  className="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                  Odhlásit
+                </button>
+              </div>
+            )}
+          </div>
         ) : (
           <Link
             href="/login"
