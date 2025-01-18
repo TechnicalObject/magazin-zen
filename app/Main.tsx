@@ -4,6 +4,7 @@ import siteMetadata from '@/data/siteMetadata'
 import { formatDate } from 'pliny/utils/formatDate'
 import NewsletterForm from 'pliny/ui/NewsletterForm'
 import Image from 'next/image'
+import TagsMenu from '@/components/TagsMenu'
 
 const MAX_DISPLAY = 5
 
@@ -19,6 +20,7 @@ export default function Home({ posts }) {
             {siteMetadata.description}
           </p>
         </div>
+        <TagsMenu />
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
           {!posts.length && 'No posts found.'}
           {posts.slice(0, MAX_DISPLAY).map((post) => {

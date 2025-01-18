@@ -10,6 +10,7 @@ import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import tagData from 'app/tag-data.json'
 import Image from 'next/image'
+import TagsMenu from '@/components/TagsMenu'
 
 interface PaginationProps {
   totalPages: number
@@ -82,6 +83,7 @@ export default function ListLayoutWithTags({
             {title}
           </h1>
         </div>
+        <TagsMenu />
         <div className="pb-6 pt-6">
           {displayPosts.map((post) => {
             const { slug, date, title, summary, tags } = post
