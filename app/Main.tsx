@@ -3,6 +3,7 @@ import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import { formatDate } from 'pliny/utils/formatDate'
 import NewsletterForm from 'pliny/ui/NewsletterForm'
+import Image from 'next/image'
 
 const MAX_DISPLAY = 5
 
@@ -26,15 +27,17 @@ export default function Home({ posts }) {
               <li key={slug} className="py-12">
                 <article className="grid grid-cols-6 gap-4">
                   <div className="col-span-1">
-                    <img
+                    <Image
                       src={post.images?.[0] || '/static/images/canada/lake.jpg'}
                       alt={title}
                       className="h-auto w-full rounded-lg"
+                      width={500}
+                      height={300}
                     />
                   </div>
                   <div className="col-span-5 space-y-2">
                     <dl>
-                      <dt className="sr-only">Published on</dt>
+                      <dt className="sr-only">Zveřejněno</dt>
                       <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
                         <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
                       </dd>

@@ -26,7 +26,7 @@ public/sitemap.xml
 /public/feed.xml
 
 # search
-/public/search.json
+# /public/search.json
 
 # misc
 .DS_Store
@@ -38,6 +38,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
+.env
 .env.local
 .env.development.local
 .env.test.local

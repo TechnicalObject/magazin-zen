@@ -49,13 +49,13 @@ export default async function CategoryPage(props: {
   const filteredPosts = allCoreContent(
     sortPosts(
       allBlogs.filter(
-        (post) => post.categories && post.categories.map((t) => slug(t)).includes(category)
-      )
-    )
+        (post) => post.categories && post.categories.map((t) => slug(t)).includes(category),
+      ),
+    ),
   )
   const initialDisplayPosts = filteredPosts.slice(
     POSTS_PER_PAGE * (pageNumber - 1),
-    POSTS_PER_PAGE * pageNumber
+    POSTS_PER_PAGE * pageNumber,
   )
 
   if (initialDisplayPosts.length === 0) {
