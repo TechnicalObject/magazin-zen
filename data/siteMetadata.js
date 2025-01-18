@@ -1,6 +1,6 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'Časpois ŽEN',
+  title: 'Časopis ŽEN',
   author: '1 žena a 4 muži',
   headerTitle: 'Časopis ŽEN',
   description: 'Velice důvěryhodný magazín, který se zaměřuje na ženy a jejich potřeby.',
