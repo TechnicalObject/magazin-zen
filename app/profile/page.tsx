@@ -154,7 +154,7 @@ export default function ProfilePage() {
                     )}
                     <button
                       type="submit"
-                      className="rounded bg-primary-500 px-4 py-2 text-white hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:hover:bg-primary-400"
+                      className="rounded bg-primary-500 px-4 py-2 text-white hover:bg-primary-600 focus:outline-none dark:hover:bg-primary-400"
                     >
                       Změnit heslo
                     </button>
