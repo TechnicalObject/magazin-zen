@@ -23,7 +23,7 @@ export default function LoginMenu() {
       document.removeEventListener('mousedown', handleClickOutside)
     }
   }, [menuRef])
-  
+
   useEffect(() => {
     const handleUserLogin = () => {
       closeMenu()
@@ -32,7 +32,7 @@ export default function LoginMenu() {
     return () => {
       window.removeEventListener('userLogin', handleUserLogin)
     }
-  },[])
+  }, [])
 
   return (
     <div className="relative" ref={menuRef}>
@@ -55,7 +55,10 @@ export default function LoginMenu() {
 
       {/* Dropdown Menu */}
       {isOpen && session && (
-        <div id="account-component" className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg py-1 z-10">
+        <div
+          id="account-component"
+          className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg py-1 z-10"
+        >
           <Link
             href="/profile"
             className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
@@ -75,7 +78,10 @@ export default function LoginMenu() {
         </div>
       )}
       {isOpen && !session && (
-        <div id="account-component" className="absolute right-0 mt-2 w-60 bg-white dark:bg-gray-800 rounded-md shadow-lg p-2 z-10">
+        <div
+          id="account-component"
+          className="absolute right-0 mt-2 w-60 bg-white dark:bg-gray-800 rounded-md shadow-lg p-2 z-10"
+        >
           {/* <Link
             href="/login"
             className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"

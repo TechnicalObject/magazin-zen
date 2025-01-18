@@ -1,18 +1,17 @@
-
 import tagData from 'app/tag-data.json'
 import { slug } from 'github-slugger'
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 
 export default function TagsMenu() {
-    const tagCounts = tagData as Record<string, number>
-    const tagKeys = Object.keys(tagCounts)
-    const sortedTags = tagKeys.sort((a, b) => tagCounts[b] - tagCounts[a])
-    return (
-        <div className="flex max-w-lg flex-wrap">
-        <p className="mr-6 my-auto text-sm font-medium uppercase text-gray-600 dark:text-gray-300">
+  const tagCounts = tagData as Record<string, number>
+  const tagKeys = Object.keys(tagCounts)
+  const sortedTags = tagKeys.sort((a, b) => tagCounts[b] - tagCounts[a])
+  return (
+    <div className="flex max-w-lg flex-wrap">
+      <p className="mr-6 my-auto text-sm font-medium uppercase text-gray-600 dark:text-gray-300">
         Rubriky:
-        </p>
+      </p>
       {tagKeys.length === 0 && 'No tags found.'}
       {sortedTags.map((t) => {
         return (
@@ -29,5 +28,5 @@ export default function TagsMenu() {
         )
       })}
     </div>
-    )
-  }
+  )
+}

@@ -12,7 +12,6 @@ import { useState } from 'react'
 import LoginMenu from '@/components/LoginMenu'
 
 export default function Header() {
-
   return (
     <header className="flex items-center justify-between py-10">
       <div>
