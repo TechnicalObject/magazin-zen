@@ -3,11 +3,9 @@
 import { useState } from 'react'
 import Link from './Link'
 import headerNavLinks from '@/data/headerNavLinks'
-import { useSession, signOut } from 'next-auth/react'
 
 const MobileNav = () => {
   const [navShow, setNavShow] = useState(false)
-  const { data: session } = useSession()
 
   const onToggleNav = () => {
     setNavShow((status) => {
@@ -60,9 +58,6 @@ const MobileNav = () => {
         </div>
         <nav className="fixed mt-8 h-full">
           {headerNavLinks
-            .filter((link) =>
-              session ? !['login', 'register'].includes(link.href.slice(1)) : link,
-            )
             .map((link) => (
               <div key={link.title} className="px-12 py-4">
                 <Link
@@ -74,19 +69,6 @@ const MobileNav = () => {
                 </Link>
               </div>
             ))}
-          {session && (
-            <div className="px-12 py-4">
-              <button
-                onClick={() => {
-                  signOut()
-                  onToggleNav()
-                }}
-                className="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100"
-              >
-                Logout
-              </button>
-            </div>
-          )}
         </nav>
       </div>
     </>
